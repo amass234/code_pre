@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <!-- <script src="main.js"></script> -->
+</head>
+
+<body>
+    <h1 style="text-align: center;">Slider </h1>
+    <div style="margin: auto;width: 640px;opacity: 0.6;">
+        <img class="slider" src="images/1.jpg">
+        <img class="slider" src="images/2.jpg">
+        <img class="slider" src="images/3.jpg">
+        <img class="slider" src="images/4.jpg">
+        <img class="slider" src="images/5.jpg">
+        <div id="centered" class="centered" />
+    </div>
+    <div>
+        <button class="button left" onclick="nextSlider()">⟵</button>
+        <button class="button right" onclick="prevSlider()">⟶</button>
+    </div>
+    <div class="button-holder">
+        <a class="slider-change" onclick="clickIndex(0)"></a>
+        <a class="slider-change" onclick="clickIndex(1)"></a>
+        <a class="slider-change" onclick="clickIndex(2)"></a>
+        <a class="slider-change" onclick="clickIndex(3)"></a>
+        <a class="slider-change" onclick="clickIndex(4)"></a>
+    </div>
+</body>
+
+<script>
+    var index = 1;
+    slideShow(index);
+
+    function nextSlider() {
+        var num = index += 1
+        slideShow(num);
+    }
+
+    function prevSlider() {
+        var num = index -= 1
+        slideShow(num);
+    }
+
+    function clickIndex(i) {
+        slideShow(index = i)
+        document.getElementById("centered").innerHTML = i + 1;
+    }
+
+    function slideShow(n) {
+        var i;
+        var x = document.getElementsByClassName("slider");
+        if (n > x.length) { index = 1 }
+        if (n < 1) { index = x.length }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[index - 1].style.display = "block";
+    }
+</script>
+
+</html>
